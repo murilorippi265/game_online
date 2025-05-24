@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Tebak Angka</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🎯 Tebak Angka 1 - 10</h2>
+  <p>Masukkan angka tebakan kamu:</p>
+  <input type="number" id="tebakan" min="1" max="10">
+  <button onclick="tebak()">Tebak!</button>
+
+  <p id="pesan"></p>
+
+  <script>
+    const angkaBenar = Math.floor(Math.random() * 10) + 1;
+
+    function tebak() {
+      const tebakan = parseInt(document.getElementById('tebakan').value);
+      const pesan = document.getElementById('pesan');
+
+      if (isNaN(tebakan) || tebakan < 1 || tebakan > 10) {
+        pesan.textContent = "Masukkan angka antara 1 sampai 10!";
+        return;
+      }
+
+      if (tebakan === angkaBenar) {
+        pesan.textContent = "🎉 Benar! Kamu menang!";
+      } else if (tebakan < angkaBenar) {
+        pesan.textContent = "Terlalu kecil! Coba lagi.";
+      } else {
+        pesan.textContent = "Terlalu besar! Coba lagi.";
+      }
+    }
+  </script>
+</body>
+</html>
